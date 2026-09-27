@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0d0f14">
+<title>香港灵异模拟器 · 玄清堂</title>
+<link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+<!-- 标题画面 -->
+<section id="title" class="screen">
+  <div class="title-card">
+    <div class="title-lantern">🏮</div>
+    <h1>香港灵异模拟器</h1>
+    <p class="subtitle">玄清堂 · 七月十四</p>
+    <p class="title-text">爷爷留下一间委托店、三个锦囊，<br>和一句「不能辞退小玲」。</p>
+    <button class="big" id="btn-new">🕯️ 新的故事</button>
+    <button class="big ghost" id="btn-continue" hidden>📖 继续上次</button>
+    <p class="tiny">建议横屏游玩 · 自动存档</p>
+  </div>
+</section>
+
+<!-- 角色创建 -->
+<section id="create" class="screen" hidden>
+  <div class="create-card">
+    <h2>📝 角色创建</h2>
+    <p class="muted">先告诉我，你是谁。</p>
+    <div class="form-grid">
+      <label>姓名<input id="f-name" maxlength="8" placeholder="必填，例如：林一"></label>
+      <label>性别
+        <select id="f-gender"><option value="男">男</option><option value="女">女</option></select>
+      </label>
+      <label>年龄<input value="18" disabled></label>
+      <label>职业/身份<input value="道士" disabled></label>
+      <label><span>外貌 <b id="f-looks-val">6</b> / 10</span><input id="f-looks" type="range" min="1" max="10" value="6"></label>
+      <label>外貌特征<input id="f-feature" maxlength="20" placeholder="选填，例如：左眉有一道疤"></label>
+      <label class="wide">MBTI / 性格
+        <select id="f-mbti">
+          <option value="">不填（随机）</option>
+          <option>INTJ</option><option>INTP</option><option>ENTJ</option><option>ENTP</option>
+          <option>INFJ</option><option>INFP</option><option>ENFJ</option><option>ENFP</option>
+          <option>ISTJ</option><option>ISFJ</option><option>ESTJ</option><option>ESFJ</option>
+          <option>ISTP</option><option>ISFP</option><option>ESTP</option><option>ESFP</option>
+        </select>
+      </label>
+    </div>
+    <details class="xl-box">
+      <summary>👧 相关角色：金小玲（可选，不填就由DM决定）</summary>
+      <div class="form-grid">
+        <label>年龄<input id="x-age" type="number" min="16" max="35" placeholder="默认 20"></label>
+        <label>外貌<input id="x-looks" maxlength="20" placeholder="默认：马尾，笑起来有虎牙"></label>
+        <label class="wide">MBTI / 性格<input id="x-mbti" maxlength="12" placeholder="默认：ENFP，嘴硬心软"></label>
+      </div>
+    </details>
+    <p id="create-err" class="err" hidden></p>
+    <button class="big" id="btn-create">🎲 生成属性</button>
+    <div id="create-result" hidden></div>
+  </div>
+</section>
+
+<!-- 游戏主画面 -->
+<section id="game" class="screen" hidden>
+  <header id="topbar">
+    <pre id="statusline"></pre>
+    <nav class="tools">
+      <button data-open="stats">📊 属性</button>
+      <button data-open="bag">🎒 背包</button>
+      <button data-open="rel">🕸️ 关系网</button>
+      <button data-open="menu">☰</button>
+    </nav>
+  </header>
+  <main id="log"></main>
+  <div id="dock"></div>
+</section>
+
+<!-- 结局 -->
+<section id="ending" class="screen" hidden>
+  <div class="ending-card" id="ending-card"></div>
+</section>
+
+<!-- 弹窗 -->
+<div id="modal" class="modal" hidden>
+  <div class="modal-card">
+    <button class="modal-x" id="modal-x">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script src="story.js?v=2"></script>
+<script src="game.js?v=2"></script>
+</body>
+</html>
